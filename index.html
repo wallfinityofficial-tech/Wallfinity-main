@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wallfinity — Aesthetic Wallpapers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-title">
+      <img src="assets/logo.png" alt="Wallfinity logo" class="logo">
+      <h1 class="glow">Wallfinity</h1>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="trending.html">Trending</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <form id="searchForm" class="search-form" onsubmit="return false;">
+      <input id="searchInput" placeholder="Search wallpapers — e.g. anime, cars, aesthetic..." />
+      <button id="searchBtn">Search</button>
+    </form>
+
+    <div id="loader" class="loader" hidden>
+      <div class="spinner"></div>
+      <div class="loader-text">Loading wallpapers...</div>
+    </div>
+
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+  </main>
+
+  <footer>
+    © 2025 Wallfinity — Made with ♥ by Shlok
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
