@@ -1,28 +1,12 @@
-export async function fetchPexels(query) {
+export default async function handler(req, res) {
   const KEY = process.env.PEXELS_API_KEY;
-  if (!KEY) {
-    console.error("Pexels key missing");
-    return [];
-  }
+  if (!KEY) return res.status(500).json({ error: 'Missing API key' });
 
+  const query = req.query.q || 'nature';
   const url = `https://api.pexels.com/v1/search?query=${encodeURIComponent(query)}&per_page=12`;
-  const res = await fetch(url, {
-    headers: { Authorization: KEY },
-  });
 
-  console.log("Pexels API status:", res.status);
+  const r = await fetch(url, { headers: { Authorization: KEY } });
+  const data = await r.json();
 
-  if (!res.ok) {
-    console.error("Pexels API failed:", res.status);
-    return [];
-  }
-
-  const data = await res.json();
-  return (data.photos || []).map((p) => ({
-    src: p.src.original,
-    thumb: p.src.large,
-    author: p.photographer,
-    url: p.url,
-    source: "Pexels",
-  }));
+  res.status(200).json(data);
 }
