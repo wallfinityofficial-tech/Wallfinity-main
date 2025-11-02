@@ -1,5 +1,5 @@
 import { getWallhavenImages } from "./api/wallhaven.js";
-import { getPexelsImages } from "./api/pexels.js";
+import { getPexelsImages } from "./pexels.js";
 import { getUnsplashImages } from "./api/unsplash.js";
 
 async function loadWallpapers(query) {
@@ -32,3 +32,4 @@ document.getElementById("searchForm").addEventListener("submit", e => {
 });
 
 loadWallpapers("peach aesthetic");
+
